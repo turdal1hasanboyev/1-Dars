@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Create</title>
+</head>
+
+<body>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="control">
+            <label for="name">Name:</label>
+            <input type="text" name="name" placeholder="Enter your name:">
+        </div><br>
+        <div class="control">
+            <label for="surname">Surname:</label>
+            <input type="text" name="surname" placeholder="Enter your surname:">
+        </div><br>
+        <div class="control">
+            <label for="age">Age:</label>
+            <input type="number" name="age" placeholder="Enter your age:">
+        </div><br>
+        <input type="submit" value="Submit">
+    </form>
+
+
+</body>
+
+</html>
