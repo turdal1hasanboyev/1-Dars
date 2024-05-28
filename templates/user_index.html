@@ -1,18 +1,23 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django Dars</title>
     <style>
-        table, th, td {
-          border:1px solid black;
-          padding: 5px;
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px;
         }
     </style>
 </head>
-<body>  
+
+<body>
     <h1>Jurnal</h1>
     <a href="/user_create/">Jurnal yaratish</a>
     <table>
@@ -25,15 +30,16 @@
             <th>Created at</th>
         </tr>
         {% for i in objects %}
-            <tr>
-                <td><a href="/user_detail/{{ i.id }}/">{{ i.id }}</a></td>
-                <td>{{ i.name }}</td>
-                <td>{{ i.surname }}</td>
-                <td>{{ i.age }}</td>
-                <td>{{ i.updated_at }}</td>
-                <td>{{ i.created_at }}</td>
-            </tr>
+        <tr>
+            <td><a href="/user_detail/{{ i.id }}/">{{ i.id }}</a></td>
+            <td>{{ i.name }}</td>
+            <td>{{ i.surname }}</td>
+            <td>{{ i.age }}</td>
+            <td>{{ i.updated_at }}</td>
+            <td>{{ i.created_at }}</td>
+        </tr>
         {% endfor %}
     </table>
 </body>
+
 </html>

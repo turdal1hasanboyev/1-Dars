@@ -29,6 +29,7 @@ class Band(models.Model):
     def __str__(self):
         return self.name
 
+
 MEMBER_CHOICES = (
             ('g', 'Guiter'),
             ('b', 'Bass'),
@@ -36,14 +37,17 @@ MEMBER_CHOICES = (
             ('d', 'Dump'),
         )
 
+
 class Member(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True)
     instrument = models.CharField(
         choices = MEMBER_CHOICES,
         max_length=1,
     )
+
     band = models.ForeignKey(Band, on_delete = models.CASCADE)
 
 
     def __str__(self):
         return self.name
+    
