@@ -99,6 +99,7 @@ def band_list(request):
 
 def member_create(request):
     form = MemberForm(request.POST or None)
+    
     if form.is_valid():
         form.save()
 
