@@ -25,7 +25,6 @@ class Jurnal(models.Model):
 class Band(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True)
 
-
     def __str__(self):
         return self.name
 
@@ -46,7 +45,6 @@ class Member(models.Model):
     )
 
     band = models.ForeignKey(Band, on_delete = models.CASCADE)
-
 
     def __str__(self):
         return self.name

@@ -20,8 +20,11 @@
 <body>
 
     <form method="post">
+
         {% csrf_token %}
+
         {{form.as_p}}
+
         <input type="submit" value="Saqlash">
         <a href="/user_delete/{{obj.id}}/">O'chirish</a>
     </form>

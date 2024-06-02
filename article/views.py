@@ -82,6 +82,7 @@ def detail_view(request, pk):
 def jurnal_delete(request, pk):
     obj = Jurnal.objects.get(id=pk)
     obj.delete()
+    
     return redirect('/')
 
 def band_list(request):
