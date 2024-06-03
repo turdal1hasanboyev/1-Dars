@@ -5,6 +5,7 @@ from .forms import MemberForm, JurnalForm, UserForm
 
 def user_index(request):
     obj = User.objects.all()
+
     context = {
         "objects": obj
     }
@@ -16,6 +17,7 @@ def user_create(request):
         name = request.POST.get("name")
         surname = request.POST.get("surname")
         age = request.POST.get("age")
+
         obj = User.objects.create(name=name, surname=surname, age=age)
 
         return redirect("/users/")
@@ -57,6 +59,7 @@ def data_create(request):
     if request.method=="POST":
         name = request.POST.get("name")
         baho = request.POST.get("baho")
+        
         obj = Jurnal.objects.create(student=name, baho=baho)
 
         return redirect("/")
