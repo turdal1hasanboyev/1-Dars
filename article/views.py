@@ -30,6 +30,7 @@ def user_detail_view(request, pk):
     obj = User.objects.get(id=pk) 
 
     form = UserForm(request.POST or None, instance=obj)
+
     if form.is_valid():
         form.save()
 
@@ -44,6 +45,7 @@ def user_detail_view(request, pk):
 
 def user_delete(request, pk):
     obj = User.objects.get(id=pk)
+
     obj.delete()
 
     return redirect('/users/')
@@ -72,6 +74,7 @@ def detail_view(request, pk):
     obj = Jurnal.objects.get(id=pk) 
 
     form = JurnalForm(request.POST or None, instance=obj)
+
     if form.is_valid():
         form.save()
 
@@ -86,6 +89,7 @@ def detail_view(request, pk):
 
 def jurnal_delete(request, pk):
     obj = Jurnal.objects.get(id=pk)
+    
     obj.delete()
     
     return redirect('/')
