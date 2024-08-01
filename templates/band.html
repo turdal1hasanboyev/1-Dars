@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -9,11 +11,14 @@
   <h1>All Bands</h1>
   <a href="/member-create/">Create Member</a>
   <form method="post">
+
     {% csrf_token %}
+
     <label for="name">Name:</label>
     <input type="text" name="name" placeholder="Enter Band">
     <input type="submit" value="POST">
   </form>
+
   <ul>
     {% for band in bands %}
     <li>

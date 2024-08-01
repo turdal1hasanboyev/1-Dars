@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 
 from article.models import Jurnal, Band, Member, User
-
 from article.forms import MemberForm, JurnalForm, UserForm
 
 
