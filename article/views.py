@@ -5,13 +5,9 @@ from article.forms import MemberForm, JurnalForm, UserForm
 
 
 def user_index(request):
-    obj = User.objects.all()
+    obj = User.objects.all().order_by("id")
 
-    context = {
-        "objects": obj
-    }
-
-    return render(request, 'user_index.html', context)    
+    return render(request, 'user_index.html', {"objects": obj})    
 
 def user_create(request):
     if request.method=="POST":
@@ -19,7 +15,7 @@ def user_create(request):
         surname = request.POST.get("surname")
         age = request.POST.get("age")
 
-        obj = User.objects.create(name=name, surname=surname, age=age)
+        User.objects.create(name=name, surname=surname, age=age)
 
         return redirect("/users/")
 
@@ -37,12 +33,12 @@ def user_detail_view(request, pk):
     
     context = {
         "obj": obj,
-        "form": form
+        "form": form,
     }
 
     return render(request, 'user_detail.html', context)
 
-def user_delete(request, pk):
+def user_delete(pk):
     obj = User.objects.get(id=pk)
 
     obj.delete()
@@ -50,22 +46,18 @@ def user_delete(request, pk):
     return redirect('/users/')
 
 def index(request):
-    obj = Jurnal.objects.all()
-
-    context = {
-        "objects": obj
-    }
+    obj = Jurnal.objects.all().order_by("id")
     
-    return render(request, 'index.html', context)
+    return render(request, 'index.html', {"objects": obj})
 
 def data_create(request):
     if request.method=="POST":
         name = request.POST.get("name")
         baho = request.POST.get("baho")
         
-        obj = Jurnal.objects.create(student=name, baho=baho)
+        Jurnal.objects.create(student=name, baho=baho)
 
-        return redirect("/")
+        return redirect("index")
 
     return render(request, 'data_create.html')
 
@@ -77,35 +69,37 @@ def detail_view(request, pk):
     if form.is_valid():
         form.save()
 
-        return redirect('/')
+        return redirect('/index/')
     
     context = {
         "obj": obj,
-        "form": form
+        "form": form,
     }
 
     return render(request, 'detail.html', context)
 
-def jurnal_delete(request, pk):
+def jurnal_delete(pk):
     obj = Jurnal.objects.get(id=pk)
     
     obj.delete()
     
-    return redirect('/')
+    return redirect('index')
 
 def band_list(request):
+    obj = Band.objects.all().order_by("id")
+
     if request.method == 'POST':
         name = request.POST.get('name')
 
         Band.objects.create(name=name)
 
         return redirect('bands')
-    
-    obj = Band.objects.all()
 
     return render(request, 'band.html', {'bands': obj})
 
 def member_create(request):
+    members = Member.objects.all().order_by("id")
+
     form = MemberForm(request.POST or None)
     
     if form.is_valid():
@@ -113,11 +107,9 @@ def member_create(request):
 
         return redirect("members")
     
-    members = Member.objects.all()
-    
     context = {
         'form':form,
-        'members': members
+        'members': members,
     }
     
     return render(request, 'member_create.html', context)

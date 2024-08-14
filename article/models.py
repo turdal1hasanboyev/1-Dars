@@ -2,30 +2,30 @@ from django.db import models
 
 
 class User(models.Model):
-    name = models.CharField(max_length=50)
-    age = models.IntegerField()
+    name = models.CharField(max_length=225, null=True, blank=True)
+    age = models.IntegerField(default=0, null=True, blank=True)
     updated_at = models.DateField(auto_now=True)
-    created_at = models.DateField(auto_now_add=True, null=True)
-    surname = models.CharField(max_length=50)
+    created_at = models.DateField(auto_now_add=True)
+    surname = models.CharField(max_length=225, null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name}"
     
 
 class Jurnal(models.Model):
-    student = models.CharField(max_length=51)
-    baho = models.IntegerField()
+    student = models.CharField(max_length=225, null=True, blank=True)
+    baho = models.IntegerField(default=0, null=True, blank=True)
     updated_at = models.DateField(auto_now=True)
-    created_at = models.DateField(auto_now_add=True, null=True)
+    created_at = models.DateField(auto_now_add=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.student} - {self.baho}"
     
 
 class Band(models.Model):
-    name = models.CharField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=225, null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
@@ -38,14 +38,15 @@ MEMBER_CHOICES = (
 
 
 class Member(models.Model):
-    name = models.CharField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=225, null=True, blank=True)
     instrument = models.CharField(
         choices = MEMBER_CHOICES,
-        max_length=1,
+        max_length=225,
+        null=True, blank=True,
     )
 
-    band = models.ForeignKey(Band, on_delete = models.CASCADE)
+    band = models.ForeignKey(Band, on_delete = models.CASCADE, null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
     
