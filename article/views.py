@@ -38,7 +38,7 @@ def user_detail_view(request, pk):
 
     return render(request, 'user_detail.html', context)
 
-def user_delete(pk):
+def user_delete(request, pk):
     obj = User.objects.get(id=pk)
 
     obj.delete()
@@ -78,7 +78,7 @@ def detail_view(request, pk):
 
     return render(request, 'detail.html', context)
 
-def jurnal_delete(pk):
+def jurnal_delete(request, pk):
     obj = Jurnal.objects.get(id=pk)
     
     obj.delete()

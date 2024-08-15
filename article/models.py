@@ -3,10 +3,10 @@ from django.db import models
 
 class User(models.Model):
     name = models.CharField(max_length=225, null=True, blank=True)
+    surname = models.CharField(max_length=225, null=True, blank=True)
     age = models.IntegerField(default=0, null=True, blank=True)
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
-    surname = models.CharField(max_length=225, null=True, blank=True)
 
     def __str__(self) -> str:
         return f"{self.name}"
@@ -44,7 +44,6 @@ class Member(models.Model):
         max_length=225,
         null=True, blank=True,
     )
-
     band = models.ForeignKey(Band, on_delete = models.CASCADE, null=True, blank=True)
 
     def __str__(self) -> str:
