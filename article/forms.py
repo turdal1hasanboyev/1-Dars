@@ -1,6 +1,6 @@
 from django import forms
 
-from article.models import Member, Jurnal, User
+from .models import Member, Jurnal, User
 
 
 class UserForm(forms.ModelForm):

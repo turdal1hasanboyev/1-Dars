@@ -8,7 +8,7 @@ class User(models.Model):
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.name}"
     
 
@@ -18,14 +18,14 @@ class Jurnal(models.Model):
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.student} - {self.baho}"
     
 
 class Band(models.Model):
     name = models.CharField(max_length=225, null=True, blank=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
 
 
@@ -46,6 +46,6 @@ class Member(models.Model):
     )
     band = models.ForeignKey(Band, on_delete = models.CASCADE, null=True, blank=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
     

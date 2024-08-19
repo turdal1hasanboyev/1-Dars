@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from article.models import Jurnal, Band, Member, User
-from article.forms import MemberForm, JurnalForm, UserForm
+from .models import Jurnal, Band, Member, User
+from .forms import MemberForm, JurnalForm, UserForm
 
 
 def user_index(request):
